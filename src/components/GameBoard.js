@@ -1,13 +1,13 @@
 import React from 'react';
 import Box from './Box';
+import { connect } from 'react-redux';
 
 import ControlButtons from './ControlButtons';
 
-const GameBoard = () => {
-    const l = [1,2,3];
-    const boxes = l.map((index, array)=>{
+const GameBoard = (props) => {
+    const boxes = props.game.map((mark, index, array)=>{
         return (
-            <Box index={index} key={index}/>
+            <Box index={index} mark={mark} key={index}/>
         )
     });
 
@@ -19,4 +19,10 @@ const GameBoard = () => {
     );
 };
 
-export default GameBoard;
+const mapStateToProps = (state) => {
+    return {
+        game: state.game
+    }
+}
+
+export default connect(mapStateToProps)(GameBoard);

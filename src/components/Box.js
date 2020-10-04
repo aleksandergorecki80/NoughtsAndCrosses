@@ -2,7 +2,7 @@ import React from 'react';
 
 const Box = (props) => {
     return (
-        <div>{props.index}</div>
+    <div>{props.index} , {props.mark}</div>
     );
 };
 

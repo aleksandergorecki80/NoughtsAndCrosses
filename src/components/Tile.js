@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Box = (props) => {
+const Tile = (props) => {
     return (
     <div>{props.index} , {props.mark}</div>
     );
 };
 
-export default Box;
+export default Tile;

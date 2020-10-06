@@ -12,10 +12,12 @@ const store = configureStore();
 
 console.log(store.getState(), '<-- STORE');
 
-const jsx = (
-    <Provider store={store}>
+const App = () => {
+    return (
+        <Provider store={store}>
         <GameBoard />
     </Provider>
-);
+    )
+};  
 
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));

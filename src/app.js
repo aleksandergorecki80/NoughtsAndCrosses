@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import configureStore from './store/configureStore';
 
-import GameBoard from './components/GameBoard';
+import AppBoard from './components/AppBoard';
 
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -15,9 +15,9 @@ console.log(store.getState(), '<-- STORE');
 const App = () => {
     return (
         <Provider store={store}>
-        <GameBoard />
-    </Provider>
+            <AppBoard />
+        </Provider>
     )
-};  
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));

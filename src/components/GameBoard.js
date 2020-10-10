@@ -3,7 +3,6 @@ import Tile from './Tile';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 
-import ControlButtons from './ControlButtons';
 
 const GameBoard = (props) => {
     const tiles = props.game.map((mark, index, array) => {
@@ -11,21 +10,47 @@ const GameBoard = (props) => {
             <Tile index={index} mark={mark} key={index} />
         )
     });
-
+    
     return (
-        <Grid container direction="column">
-            <Grid item container>
-                <Grid item xs={false} sm={2} />
-                <Grid item xs={12} sm={8}>
-                    <ControlButtons />
+            <Grid container direction="column">
+                <Grid item container>
+                    {/* {tiles} */}
+                    <Grid item xs={4}>
+                        <Tile index={0} mark={'X'} />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Tile index={1} mark={'X'} />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Tile index={2} mark={'X'} />
+                    </Grid>
                 </Grid>
-                <Grid item xs={false} sm={2} />
+                <Grid item container>
+                    {/* {tiles} */}
+                    <Grid item xs={4}>
+                        <Tile index={3} mark={'X'} />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Tile index={4} mark={'X'} />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Tile index={5} mark={'X'} />
+                    </Grid>
+                </Grid>
+                <Grid item container>
+                    {/* {tiles} */}
+                    <Grid item xs={4}>
+                        <Tile index={6} mark={'X'} />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Tile index={7} mark={'X'} />
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Tile index={8} mark={'X'} />
+                    </Grid>
+                </Grid>
             </Grid>
-            <Grid item>
-                {tiles}
-            </Grid>
-        </Grid>
-    );
+    )
 };
 
 const mapStateToProps = (state) => {

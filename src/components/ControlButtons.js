@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import Box from '@material-ui/core/Box';
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -8,13 +9,17 @@ const useStyles = makeStyles((theme) => ({
         padding: '20px 50px',
         fontSize: '2rem',
         fontWeight: "bold"
+    },
+    buttonsContainer: {
+        display: 'flex',
+        justifyContent: 'center'
     }
 }));
 
 const ControlButtons = () => {
     const classes = useStyles();
     return (
-        <div>
+        <Box className={classes.buttonsContainer}>
             <Button 
                 variant="outlined" 
                 size="large" 
@@ -31,7 +36,7 @@ const ControlButtons = () => {
                 >
                 SAVE
             </Button>
-        </div>
+        </Box>
     )
 }
 

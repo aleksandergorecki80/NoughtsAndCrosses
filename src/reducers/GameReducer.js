@@ -1,13 +1,18 @@
 // Game reducer
 
-const gameReducerDefaultState = ['X','0','X','0','0','0','X','0','X'];
+const gameReducerDefaultState = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
 
 const GameReducer = (state = gameReducerDefaultState, action) => {
     switch(action.type) {
         case 'ADD_MARK':
-            return [
-
-            ];
+            console.log(action.id)
+            return state.map((value, index)=>{
+                if(index === action.id){
+                    return action.mark
+                } else {
+                    return state[index]
+                }
+            });
         case 'RESET':
             return gameReducerDefaultState;
         default: 

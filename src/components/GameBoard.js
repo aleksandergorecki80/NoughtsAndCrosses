@@ -2,53 +2,24 @@ import React from 'react';
 import Tile from './Tile';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
+import { addMark } from '../actions/GameActions';
 
 
 const GameBoard = (props) => {
+    const onMarkTheTile = (id) => {
+        props.dispatch(addMark(id, 'O'));
+    } 
     const tiles = props.game.map((mark, index, array) => {
         return (
-            <Tile index={index} mark={mark} key={index} />
+            <Grid item xs={4} key={index}>
+                <Tile index={index} mark={mark} key={index} onMarkTheTile={onMarkTheTile}/>
+            </Grid>
         )
     });
     
     return (
-            <Grid container direction="column">
-                <Grid item container>
-                    {/* {tiles} */}
-                    <Grid item xs={4}>
-                        <Tile index={0} mark={'X'} />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Tile index={1} mark={'X'} />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Tile index={2} mark={'X'} />
-                    </Grid>
-                </Grid>
-                <Grid item container>
-                    {/* {tiles} */}
-                    <Grid item xs={4}>
-                        <Tile index={3} mark={'X'} />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Tile index={4} mark={'X'} />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Tile index={5} mark={'X'} />
-                    </Grid>
-                </Grid>
-                <Grid item container>
-                    {/* {tiles} */}
-                    <Grid item xs={4}>
-                        <Tile index={6} mark={'X'} />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Tile index={7} mark={'X'} />
-                    </Grid>
-                    <Grid item xs={4}>
-                        <Tile index={8} mark={'X'} />
-                    </Grid>
-                </Grid>
+            <Grid container>
+                    {tiles}
             </Grid>
     )
 };

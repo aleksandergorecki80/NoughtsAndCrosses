@@ -1,10 +1,11 @@
 import React from 'react';
-
 import GameBoard from './GameBoard';
-
-import { Grid } from '@material-ui/core';
-
+import { Grid, makeStyles } from '@material-ui/core';
 import ControlButtons from './ControlButtons';
+
+const useStyles = makeStyles((theme) => ({
+    
+}));
 
 const AppBoard = (props) => {
     return (
@@ -17,11 +18,11 @@ const AppBoard = (props) => {
                 <Grid item xs={1} sm={2} />
             </Grid>
             <Grid item container>
-                <Grid item xs={1} sm={2} />
-                <Grid item xs={10} sm={8}>
+                <Grid item xs={1} sm={2} md={3} lg={4}/>
+                <Grid item xs={10} sm={8} md={6} lg={4}>
                     <GameBoard />
                 </Grid>
-                <Grid item xs={1} sm={2} />
+                <Grid item xs={1} sm={2} md={3} lg={4}/>
             </Grid>
         </Grid>
     );

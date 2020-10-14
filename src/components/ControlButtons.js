@@ -1,4 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { turnGameOn } from '../actions/GameActions';
+import { resetGame } from '../actions/GameActions';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
@@ -17,8 +20,11 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const ControlButtons = () => {
+const ControlButtons = (props) => {
     const classes = useStyles();
+    const onTurnOnOrResetGame = () => {
+       !props.isRun ? props.dispatch(turnGameOn()) : props.dispatch(resetGame());
+    }
     return (
         <Box className={classes.buttonsContainer}>
             <Button 
@@ -26,8 +32,10 @@ const ControlButtons = () => {
                 size="large" 
                 color="primary" 
                 className={classes.button}
+                onClick={onTurnOnOrResetGame}
                 >
-                START
+                {!props.isRun ? 'START' : 'RESET'}
+                
             </Button>
             <Button 
                 variant="outlined" 
@@ -41,4 +49,10 @@ const ControlButtons = () => {
     )
 }
 
-export default ControlButtons;
+const mapStateToProps = (state) => {
+    return {
+        isRun: state.game.isRun
+    }
+}
+
+export default connect(mapStateToProps)(ControlButtons);

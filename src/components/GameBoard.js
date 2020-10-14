@@ -26,7 +26,7 @@ const GameBoard = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        game: state.game
+        game: state.game.gameState
     }
 }
 

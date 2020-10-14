@@ -1,21 +1,33 @@
 // Game reducer
 
-const gameReducerDefaultState = [' ',' ',' ',' ',' ',' ',' ',' ',' '];
+const gameReducerDefaultState = {
+    gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+    currentPlayer: '',
+    isRun: false
+};
 
 const GameReducer = (state = gameReducerDefaultState, action) => {
-    switch(action.type) {
+    switch (action.type) {
         case 'ADD_MARK':
-            console.log(action.id)
-            return state.map((value, index)=>{
-                if(index === action.id){
-                    return action.mark
-                } else {
-                    return state[index]
-                }
-            });
-        case 'RESET':
+            return {
+                ...state,
+                gameState: state.gameState.map((value, index) => {
+                    if (index === action.id) {
+                        return action.mark
+                    } else {
+                        return state.gameState[index]
+                    }
+                })
+            }
+
+        case 'RESET_GAME':
             return gameReducerDefaultState;
-        default: 
+        case 'TURN_GAME_ON':
+            return {
+                ...state,
+                isRun: true
+            }
+        default:
             return state;
     }
 }

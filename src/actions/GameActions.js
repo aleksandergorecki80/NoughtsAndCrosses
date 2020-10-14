@@ -3,3 +3,13 @@ export const addMark = (id, mark) => ({
     id,
     mark
 });
+
+export const turnGameOn = () => ({
+    type: 'TURN_GAME_ON',
+});
+
+export const resetGame = () => {
+    return {
+        type: 'RESET_GAME'
+    }
+}

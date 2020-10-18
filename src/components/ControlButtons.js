@@ -6,6 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 
+import Modal from './Modal';
+
 const useStyles = makeStyles((theme) => ({
     button: {
         margin: theme.spacing(1),
@@ -27,6 +29,7 @@ const ControlButtons = (props) => {
     }
     return (
         <Box className={classes.buttonsContainer}>
+                            <Modal />
             <Button 
                 variant="outlined" 
                 size="large" 

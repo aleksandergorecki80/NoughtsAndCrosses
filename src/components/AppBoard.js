@@ -1,7 +1,7 @@
 import React from 'react';
 import GameBoard from './GameBoard';
 import { Grid, makeStyles } from '@material-ui/core';
-import ControlButtons from './ControlButtons';
+import StartReserButton from './StartReserButton';
 
 const useStyles = makeStyles((theme) => ({
     
@@ -13,7 +13,7 @@ const AppBoard = (props) => {
             <Grid item container>
                 <Grid item xs={1} sm={2} />
                 <Grid item xs={10} sm={8}>
-                    <ControlButtons />
+                    <StartReserButton />
                 </Grid>
                 <Grid item xs={1} sm={2} />
             </Grid>

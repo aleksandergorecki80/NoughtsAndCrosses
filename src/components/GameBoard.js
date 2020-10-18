@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import { addMark } from '../actions/GameActions';
 
-
 const GameBoard = (props) => {
     const onMarkTheTile = (id) => {
         props.dispatch(addMark(id, 'O'));

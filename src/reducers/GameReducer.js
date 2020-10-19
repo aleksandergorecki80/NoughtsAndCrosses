@@ -27,6 +27,11 @@ const GameReducer = (state = gameReducerDefaultState, action) => {
                 ...state,
                 isRun: true
             }
+        case 'SELECT_PLAYER':
+            return {
+                ...state,
+                currentPlayer: action.player
+            }
         default:
             return state;
     }

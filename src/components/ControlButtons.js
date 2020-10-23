@@ -15,25 +15,32 @@ function rand() {
   return Math.round(Math.random() * 20) - 10;
 }
 
-function getModalStyle() {
-  const top = 50 + rand();
-  const left = 50 + rand();
+// function getModalStyle() {
+//   const top = 50 + rand();
+//   const left = 50 + rand();
 
-  return {
-    top: `${top}%`,
-    left: `${left}%`,
-    transform: `translate(-${top}%, -${left}%)`,
-  };
-}
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
+//     transform: `translate(-${top}%, -${left}%)`,
+//   };
+// }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    position: 'absolute',
-    width: 400,
+    // position: 'absolute',
+    // width: 400,
     backgroundColor: theme.palette.background.paper,
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    maxWidth: '90%',
+    position: 'relative',
+    display: 'flex',
+    height: '30vh',
+    top: '0',
+    left: '0',
+    transform: 'none'
   },
   // button styles
   button: {
@@ -46,6 +53,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     marginBottom: '30px'
+  },
+  modalBackgroundStyles: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
   }
 
 }));
@@ -57,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
 const ControlButtons = (props) => {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
-  const [modalStyle] = React.useState(getModalStyle);
+  // const [modalStyle] = React.useState(getModalStyle);
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
@@ -79,13 +91,15 @@ const ControlButtons = (props) => {
   }
 
   const selectPlayer = (
-    <Box style={modalStyle} className={classes.paper}>
+    // <Box style={modalStyle} className={classes.paper}>
+    <Box  className={classes.paper}>
       <SelectPlayer handleClose={handleClose} />
     </Box>
   );
 
   const resetGame = (
-    <Box style={modalStyle} className={classes.paper}>
+    // <Box style={modalStyle} className={classes.paper}>
+    <Box  className={classes.paper}>
       <ResetGame handleClose={handleClose} />
     </Box>
   );
@@ -110,6 +124,7 @@ const ControlButtons = (props) => {
         SAVE
       </Button>
       <Modal
+        className={classes.modalBackgroundStyles}
         open={open}
         onClose={handleClose}
         aria-labelledby="simple-modal-title"

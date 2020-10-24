@@ -52,7 +52,6 @@ const useStyles = makeStyles((theme) => ({
   buttonsContainer: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '30px'
   },
   modalBackgroundStyles: {
     display: 'flex',

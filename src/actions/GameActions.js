@@ -20,3 +20,10 @@ export const selectPlayer = (player) => {
         player
     }
 }
+
+// export const switchPlayer = (player) => {
+//     return {
+//         type: 'SWITCH_PLAYER',
+//         player
+//     }
+// }

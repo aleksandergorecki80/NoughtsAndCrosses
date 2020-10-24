@@ -32,6 +32,11 @@ const GameReducer = (state = gameReducerDefaultState, action) => {
                 ...state,
                 currentPlayer: action.player
             }
+        // case 'SWITCH_PLAYER':
+        //     return {
+        //         ...state,
+        //         currentPlayer: 
+        //     }
         default:
             return state;
     }

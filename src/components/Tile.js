@@ -2,6 +2,7 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
+import { connect } from 'react-redux';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -35,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
 const Tile = (props) => {
     const classes = useStyles();
     const onMarkChange = () => {
-        props.onMarkTheTile(props.index);
+        props.onMarkTheTile(props.index, props.currentPlayer);
+        props.onSwitchThePlayer(props.currentPlayer);
     }
 
     if (props.index === 6 || props.index === 7) {
@@ -63,4 +65,10 @@ const Tile = (props) => {
 
 };
 
-export default Tile;
+const mapStateToProps = (state) => {
+    return {
+        currentPlayer: state.game.currentPlayer
+    }
+};
+
+export default connect(mapStateToProps)(Tile);

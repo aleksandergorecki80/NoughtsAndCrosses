@@ -11,7 +11,6 @@ const GameBoard = (props) => {
     }
     const onSwitchThePlayer = (currentPlayer) => {
         const switchToPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        console.log(switchToPlayer);
         props.dispatch(selectPlayer(switchToPlayer));
     }
     const tiles = props.game.map((mark, index, array) => {

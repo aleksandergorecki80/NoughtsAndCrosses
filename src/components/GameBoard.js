@@ -13,10 +13,16 @@ const GameBoard = (props) => {
         const switchToPlayer = currentPlayer === 'X' ? 'O' : 'X';
         props.dispatch(selectPlayer(switchToPlayer));
     }
+    const checkTheWinner = () => {
+        // Tu przenieś kod ze sprawdzaniem winnera ale dziisij zabardzo mi sie che spać 
+        // kod kjest w pliku AppBoard
+    }
     const tiles = props.game.map((mark, index, array) => {
         return (
             <Grid item xs={4} key={index}>
-                <Tile index={index} mark={mark} key={index} 
+                <Tile 
+                // {...props}
+                index={index} mark={mark} key={index} 
                 onMarkTheTile={onMarkTheTile} 
                 onSwitchThePlayer={onSwitchThePlayer}/>
             </Grid>

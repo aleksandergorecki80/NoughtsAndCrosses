@@ -36,8 +36,10 @@ const useStyles = makeStyles((theme) => ({
 const Tile = (props) => {
     const classes = useStyles();
     const onMarkChange = () => {
-        props.onMarkTheTile(props.index, props.currentPlayer);
-        props.onSwitchThePlayer(props.currentPlayer);
+        if(props.isRun){
+            props.onMarkTheTile(props.index, props.currentPlayer);
+            props.onSwitchThePlayer(props.currentPlayer);
+        }
     }
 
     if (props.index === 6 || props.index === 7) {
@@ -67,7 +69,8 @@ const Tile = (props) => {
 
 const mapStateToProps = (state) => {
     return {
-        currentPlayer: state.game.currentPlayer
+        currentPlayer: state.game.currentPlayer,
+        isRun: state.game.isRun
     }
 };
 

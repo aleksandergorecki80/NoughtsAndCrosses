@@ -3,7 +3,8 @@
 const gameReducerDefaultState = {
     gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     currentPlayer: '',
-    isRun: false
+    isRun: false,
+    isWinner: ''
 };
 
 const GameReducer = (state = gameReducerDefaultState, action) => {
@@ -32,11 +33,11 @@ const GameReducer = (state = gameReducerDefaultState, action) => {
                 ...state,
                 currentPlayer: action.player
             }
-        // case 'SWITCH_PLAYER':
-        //     return {
-        //         ...state,
-        //         currentPlayer: 
-        //     }
+        case 'SELECT_WINNER':
+            return {
+                ...state,
+                isWinner: action.winner
+            }
         default:
             return state;
     }

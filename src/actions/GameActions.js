@@ -21,9 +21,9 @@ export const selectPlayer = (player) => {
     }
 }
 
-// export const switchPlayer = (player) => {
-//     return {
-//         type: 'SWITCH_PLAYER',
-//         player
-//     }
-// }
+export const selectWinner = (winner) => {
+    return {
+        type: 'SELECT_WINNER',
+        winner
+    }
+}

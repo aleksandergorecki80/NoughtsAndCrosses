@@ -29,10 +29,11 @@ const useStyles = makeStyles((theme) => ({
     border: '2px solid #000',
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
-    maxWidth: '50%',
+    width: '30vw',
+    maxWidth: '90%',
     position: 'relative',
     display: 'flex',
-    height: '20vh',
+    height: '30vh',
     top: '0',
     left: '0',
     transform: 'none'
@@ -45,6 +46,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  gridItemStyle: {
+    display: 'flex',
+    justifyContent: 'center'
   }
 }));
 
@@ -71,10 +76,10 @@ const SimpleModal = (props) => {
 
   const body = (
     <Box className={classes.paper}>
-      <Grid container direction="column" spacing={2}>
-        <Grid item container><Typography>GAME OVER</Typography></Grid>
-        <Grid item container><Typography>{props.isWinner} wins.</Typography></Grid>
-        <Grid item container><button onClick={handleClose}>OK</button></Grid>
+      <Grid container direction="column" spacing={2} className={classes.gridItemStyle}>
+        <Grid item container className={classes.gridItemStyle}><Typography>GAME OVER</Typography></Grid>
+        <Grid item container className={classes.gridItemStyle}><Typography>{props.isWinner} wins.</Typography></Grid>
+        <Grid item container className={classes.gridItemStyle}><button onClick={handleClose}>OK</button></Grid>
       </Grid>
     </Box>
   );

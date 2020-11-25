@@ -20,19 +20,26 @@ const GameBoard = (props) => {
     const tiles = props.game.map((mark, index, array) => {
         return (
             <Grid item xs={4} key={index}>
-                <Tile 
-                // {...props}
-                index={index} mark={mark} key={index} 
-                onMarkTheTile={onMarkTheTile} 
-                onSwitchThePlayer={onSwitchThePlayer}/>
+                <Tile
+                    // {...props}
+                    index={index} mark={mark} key={index}
+                    onMarkTheTile={onMarkTheTile}
+                    onSwitchThePlayer={onSwitchThePlayer} />
             </Grid>
         )
     });
-    
+
     return (
-            <Grid container>
+        <Grid item container>
+            <Grid item xs={1} sm={2} md={3} lg={4} />
+                <Grid item container xs={10} sm={8} md={6} lg={4}>
                     {tiles}
-            </Grid>
+                </Grid>
+            <Grid item xs={1} sm={2} md={3} lg={4} />
+        </Grid>
+
+
+
     )
 };
 

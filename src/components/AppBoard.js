@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import configureStore from '../store/configureStore';
 import GameBoard from './GameBoard';
-import { Grid, makeStyles } from '@material-ui/core';
-import ControlButtons from './ControlButtons';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import SelectPlayer from './SelectPlayer';
+import StartGame from './StartGame';
 import { selectWinner } from '../actions/GameActions';
-import SimpleModal from '../components/Modal';
+import GameOver from './GameOver';
+
+const store = configureStore();
 
 class AppBoard extends React.Component {
     constructor(props) {
@@ -43,37 +45,25 @@ class AppBoard extends React.Component {
       render(){
 
         return (
-            <Grid container direction="column" spacing={2}>
-                <Grid item container>
-                    <Grid item xs={1} sm={2} />
-                    <Grid item xs={10} sm={8}>
-                        <ControlButtons />
-                    </Grid>
-                    <Grid item xs={1} sm={2} />
-                </Grid>
-                <Grid item container
-                    justify="center"
-                    alignItems="center"
-                >
-                    <Grid item>
-                        <Box>
-                            <Typography>
-                                { this.props.currentPlayer ? `${this.props.currentPlayer} is playing now` : ''} 
-                            </Typography>
-                        </Box>
-                    </Grid>
-                </Grid>
-                <Grid item container>
-                    <Grid item xs={1} sm={2} md={3} lg={4} />
-                    <Grid item xs={10} sm={8} md={6} lg={4}>
-                        <GameBoard />
-                    </Grid>
-                    <Grid item xs={1} sm={2} md={3} lg={4} />
-                </Grid>
-                <Grid item>
-                    <SimpleModal />
-                </Grid>
-            </Grid>
+            <div>
+                <BrowserRouter>
+                <div>
+                    <Switch>
+                        <Route path="/game">
+                            <GameBoard />
+                        </Route>
+                        <Route path="/select">
+                            <SelectPlayer />
+                        </Route>
+                        <Route path="/">
+                            <StartGame />
+                        </Route>
+                    </Switch>
+                    <GameOver />
+                    </div>
+                </BrowserRouter>
+                
+            </div>
         );
       }
 }

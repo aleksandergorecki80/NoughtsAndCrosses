@@ -22,7 +22,7 @@ const SelectPlayer = (props) => {
     const onSelectPlayer = (event) => {
         props.dispatch(selectPlayer(event.target.value));
         props.dispatch(turnGameOn());
-        props.handleClose();
+        // props.handleClose();
     }
     return (
         <motion.div

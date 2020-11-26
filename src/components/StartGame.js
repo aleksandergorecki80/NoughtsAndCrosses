@@ -33,9 +33,9 @@ const StartGame = (props) => {
 
     return (
         <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1.5 }}
+            initial={{ x: '100vw' }}
+            animate={{ x: 0 }}
+            transition={{ type: 'spring', stiffness: 120 }}
         >
             <Box className={classes.buttonsContainer}>
                 <Link to="/select">

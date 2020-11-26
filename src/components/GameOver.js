@@ -7,21 +7,7 @@ import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { useEffect } from "react";
 import { resetGame } from "../actions/GameActions";
-
-// function rand() {
-//   return Math.round(Math.random() * 20) - 10;
-// }
-
-// function getModalStyle() {
-//   const top = 50 + rand();
-//   const left = 50 + rand();
-
-//   return {
-//     top: `${top}%`,
-//     left: `${left}%`,
-//     transform: `translate(-${top}%, -${left}%)`,
-//   };
-// }
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -55,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const SimpleModal = (props) => {
+const GameOver = (props) => {
   const classes = useStyles();
   // getModalStyle is not a pure function, we roll the style only on the first render
   // const [modalStyle] = React.useState(getModalStyle);
@@ -79,7 +65,11 @@ const SimpleModal = (props) => {
       <Grid container direction="column" spacing={2} className={classes.gridItemStyle}>
         <Grid item container className={classes.gridItemStyle}><Typography>GAME OVER</Typography></Grid>
         <Grid item container className={classes.gridItemStyle}><Typography>{props.isWinner} wins.</Typography></Grid>
-        <Grid item container className={classes.gridItemStyle}><button onClick={handleClose}>OK</button></Grid>
+        <Grid item container className={classes.gridItemStyle}>
+          <Link to="/select">
+            <button onClick={handleClose}>OK</button>
+          </Link>
+        </Grid>
       </Grid>
     </Box>
   );
@@ -107,4 +97,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(SimpleModal);
+export default connect(mapStateToProps)(GameOver);

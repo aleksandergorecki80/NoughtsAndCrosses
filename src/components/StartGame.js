@@ -19,13 +19,41 @@ const useStyles = makeStyles((theme) => ({
         // justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'column'
-    },
-
-
+    }
 }));
 ///
 
 /// BUTTONS SECTION
+
+const buttonsVarients = {
+    hidden: {
+        x: '100vw',
+    },
+    visible: {
+        x: 0,
+        transition: { type: 'spring', stiffness: 120 }
+    },
+    exit: {
+        x: '-100vw',
+        transition: {
+          ease: 'easeInOut'
+        }
+      }
+}
+
+const startButtonVarients = {
+    hover: {
+        // scale: [1, 1.1, 1, 1.1, 1, 1.1, 1, 1.1],
+        scale: 1.1,
+        textShadow: "0px 0px 8px rgb(255,255,255)",
+        boxShadow: "0px 0px 8px rgb(255,255,255)",
+        transition: {
+          duration: 0.5,
+        //   yoyo: Infinity
+          yoyo: 3
+        }
+    }
+}
 
 
 const StartGame = (props) => {
@@ -33,21 +61,24 @@ const StartGame = (props) => {
 
     return (
         <motion.div
-            initial={{ x: '100vw' }}
-            animate={{ x: 0 }}
-            transition={{ type: 'spring', stiffness: 120 }}
+            variants={buttonsVarients}
+            initial='hidden'
+            animate='visible'
+            exit='exit'
         >
             <Box className={classes.buttonsContainer}>
                 <Link to="/select">
-                    <Button
+                    <motion.button
                         variant="outlined"
                         size="large"
                         color="primary"
                         className={classes.button}
                     // onClick={onClickHandle}
+                        variants={startButtonVarients}
+                        whileHover="hover"
                     >
                         START
-            </Button>
+            </motion.button>
                 </Link>
                 <Button
                     variant="outlined"

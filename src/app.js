@@ -5,6 +5,7 @@ import configureStore from './store/configureStore';
 import AppBoard from './components/AppBoard';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 const store = configureStore();
 
@@ -14,7 +15,11 @@ const App = () => {
     return (
 
         <Provider store={store}>
-            <AppBoard />
+            <React.StrictMode>
+                <Router>
+                    <AppBoard />
+                </Router>
+            </React.StrictMode>
         </Provider>
     )
 };

@@ -17,6 +17,16 @@ const useStyle = makeStyles((theme) => ({
 })
 )
 
+const buttonsVarients = {
+    hidden: {
+        x: '100vw',
+    },
+    visible: {
+        x: 0,
+        transition: { type: 'spring', stiffness: 120 }
+    }
+}
+
 const SelectPlayer = (props) => {
     const classes = useStyle();
     const onSelectPlayer = (event) => {
@@ -26,9 +36,9 @@ const SelectPlayer = (props) => {
     }
     return (
         <motion.div
-            initial={{ x: '100vw' }}
-            animate={{ x: 0 }}
-            transition={{ type: 'spring', stiffness: 120 }}
+            variants={buttonsVarients}
+            initial='hidden'
+            animate='visible'
         >
             <Grid container
                 direction="column"

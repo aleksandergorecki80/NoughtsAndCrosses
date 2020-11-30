@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import configureStore from '../store/configureStore';
 import GameBoard from './GameBoard';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import SelectPlayer from './SelectPlayer';
 import StartGame from './StartGame';
 import { selectWinner } from '../actions/GameActions';
 import GameOver from './GameOver';
+import { AnimatePresence } from 'framer-motion';
 
 const store = configureStore();
+// const location = useLocation();
 
 class AppBoard extends React.Component {
     constructor(props) {
@@ -46,9 +48,9 @@ class AppBoard extends React.Component {
 
         return (
             <div>
-                <BrowserRouter>
                 <div>
-                    <Switch>
+                    <AnimatePresence>
+                    <Switch location={location} key={location.key}>
                         <Route path="/game">
                             <GameBoard />
                         </Route>
@@ -59,10 +61,9 @@ class AppBoard extends React.Component {
                             <StartGame />
                         </Route>
                     </Switch>
+                    </AnimatePresence>
                     <GameOver />
                     </div>
-                </BrowserRouter>
-                
             </div>
         );
       }

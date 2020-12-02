@@ -56,7 +56,12 @@ const SelectPlayer = (props) => {
                     <Grid item>
                         <Link to="/game">
                             <Typography className={classes.basicTileStyles}>
-                                <button value="X" onClick={onSelectPlayer}>X</button>
+                                <button value="X" onClick={onSelectPlayer}>
+                                    <svg version="1.1" id="Warstwa_1" xmlns="http://www.w3.org/2000/svg">
+                                        <line fill="none" stroke="#000000" strokeWidth="3" strokeMiterlimit="10" x1="0" y1="0" x2="300" y2="300" />
+                                        <line fill="none" stroke="#000000" strokeWidth="3" strokeMiterlimit="10" x1="0" y1="300" x2="300" y2="0" />
+                                    </svg>
+                                </button>
                             </Typography>
                         </Link>
                     </Grid>

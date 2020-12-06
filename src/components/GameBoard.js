@@ -4,19 +4,39 @@ import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import { motion } from 'framer-motion';
 import { addMark, selectPlayer } from '../actions/GameActions';
+import { Link } from 'react-router-dom';
 
-const boardVarients = {
-    hidden: {
-        x: '100vw',
+const containerVariants = {
+    hidden: { 
+      opacity: 0, 
+      x: '100vw',
+      transition: {
+        staggerChildren: 0.5,
+      } 
     },
-    visible: {
-        x: 0,
-        transition: { type: 'spring', stiffness: 120 }
-    }
-}
+    visible: { 
+      opacity: 1, 
+      x: 0,
+      transition: { 
+        type: 'spring',
+        mass: 0.4,
+        damping: 8,
+        staggerChildren: 0.4,
+        when: "beforeChildren",
+      }
+    },
+  };
+  
+  // const childVariants = {
+  //   hidden: {
+  //     opacity: 0,
+  //   },
+  //   visible: {
+  //     opacity: 1,
+  //   }
+  // }
 
 const GameBoard = (props) => {
-
     const onMarkTheTile = (id, currentPlayer) => {
         props.dispatch(addMark(id, currentPlayer));
     }
@@ -24,15 +44,10 @@ const GameBoard = (props) => {
         const switchToPlayer = currentPlayer === 'X' ? 'O' : 'X';
         props.dispatch(selectPlayer(switchToPlayer));
     }
-    const checkTheWinner = () => {
-        // Tu przenieś kod ze sprawdzaniem winnera ale dziisij zabardzo mi sie che spać 
-        // kod kjest w pliku AppBoard
-    }
     const tiles = props.game.map((mark, index, array) => {
         return (
             <Grid item xs={4} key={index}>
                 <Tile
-                    // {...props}
                     index={index} mark={mark} key={index}
                     onMarkTheTile={onMarkTheTile}
                     onSwitchThePlayer={onSwitchThePlayer} />
@@ -42,9 +57,10 @@ const GameBoard = (props) => {
 
     return (
         <motion.div
-            variants={boardVarients}
+            variants={containerVariants}
             initial='hidden'
             animate='visible'
+            exit='exit'
         >
             <Grid item container>
                 <Grid item xs={1} sm={2} md={3} lg={4} />
@@ -54,8 +70,6 @@ const GameBoard = (props) => {
                 <Grid item xs={1} sm={2} md={3} lg={4} />
             </Grid>
         </motion.div>
-
-
     )
 };
 

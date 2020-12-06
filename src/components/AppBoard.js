@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Route, Switch, useLocation } from "react-router-dom";
 import { connect } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
 import { selectWinner, resetGame } from '../actions/GameActions';
-
-import GameBoard from './GameBoard';
-import SelectPlayer from './SelectPlayer';
-import StartGame from './StartGame';
 import GameOver from './GameOver';
-
+import StartGame from './StartGame';
+import SelectPlayer from './SelectPlayer';
+import GameBoard from './GameBoard';
+import { AnimatePresence } from 'framer-motion';
 
 const AppBoard = (props) => {
+  const location = useLocation();
+  const [showModal, setShowModal] = useState(false);
 
-    const [showModal, setShowModal ] = useState(false);
-    const closeModalResetGame = () => {
-        console.log('kki');
-        props.dispatch(resetGame());
-        setShowModal(false);
-    }
+  const closeModalResetGame = () => {
+    console.log('closeModalResetGame');
+    props.dispatch(resetGame());
+    setShowModal(false);
+}
 
-    useEffect(() => {
+useEffect(() => {
         if (
             (props.gameState[0] === 'X' && props.gameState[4] === 'X' && props.gameState[8] === 'X') ||
             (props.gameState[2] === 'X' && props.gameState[4] === 'X' && props.gameState[6] === 'X') ||
@@ -31,7 +30,6 @@ const AppBoard = (props) => {
             (props.gameState[6] === 'X' && props.gameState[7] === 'X' && props.gameState[8] === 'X')
         ) {
             props.dispatch(selectWinner('X'));
-            console.log('X wins');
             setShowModal(true);
         } else if (
             (props.gameState[0] === 'O' && props.gameState[4] === 'O' && props.gameState[8] === 'O') ||
@@ -44,38 +42,36 @@ const AppBoard = (props) => {
             (props.gameState[6] === 'O' && props.gameState[7] === 'O' && props.gameState[8] === 'O')
         ) {
             props.dispatch(selectWinner('O'));
-            console.log('O wins');
             setShowModal(true);
         }
     });
-console.log(showModal, 'show modal app')
-    return (
-        <div>
-            <AnimatePresence>
-                <Switch>
-                    <Route path="/game">
-                        <GameBoard />
-                    </Route>
-                    <Route path="/select">
-                        <SelectPlayer />
-                    </Route>
-                    <Route path="/">
-                        <StartGame />
-                    </Route>
-                </Switch>
-            </AnimatePresence>
-            <GameOver closeModalResetGame={closeModalResetGame} showModal={showModal}/>
 
-        </div>
-    );
+  return (
+    <div>
+      <GameOver showModal={showModal} closeModalResetGame={closeModalResetGame} isWinner={props.isWinner}/>
+      <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)}>
+        <Switch location={location} key={location.key}>
+          <Route path="/game">
+            <GameBoard setShowModal={setShowModal}/>
+          </Route>
+          <Route path="/select">
+            <SelectPlayer setShowModal={setShowModal} />
+          </Route>
+          <Route path="/">
+            <StartGame setShowModal={setShowModal} />
+          </Route>
+        </Switch>
+      </AnimatePresence>
+    </div>
+  );
 }
 
 const mapStateToProps = (state) => {
-    return {
-        currentPlayer: state.game.currentPlayer,
-        gameState: state.game.gameState,
-        isWinner: state.game.isWinner
-    }
+  return {
+      currentPlayer: state.game.currentPlayer,
+      gameState: state.game.gameState,
+      isWinner: state.game.isWinner
+  }
 }
 
 export default connect(mapStateToProps)(AppBoard);

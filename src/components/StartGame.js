@@ -36,9 +36,9 @@ const buttonsVarients = {
     exit: {
         x: '-100vw',
         transition: {
-          ease: 'easeInOut'
+            ease: 'easeInOut'
         }
-      }
+    }
 }
 
 const startButtonVarients = {
@@ -48,9 +48,9 @@ const startButtonVarients = {
         textShadow: "0px 0px 8px rgb(255,255,255)",
         boxShadow: "0px 0px 8px rgb(255,255,255)",
         transition: {
-          duration: 0.5,
-        //   yoyo: Infinity
-          yoyo: 3
+            duration: 0.5,
+            //   yoyo: Infinity
+            yoyo: 3
         }
     }
 }
@@ -73,7 +73,6 @@ const StartGame = (props) => {
                         size="large"
                         color="primary"
                         className={classes.button}
-                    // onClick={onClickHandle}
                         variants={startButtonVarients}
                         whileHover="hover"
                     >
@@ -86,8 +85,8 @@ const StartGame = (props) => {
                     color="primary"
                     className={classes.button}
                 >
-                    SAVE
-      </Button>
+                    About
+                 </Button>
             </Box>
         </motion.div>
     );

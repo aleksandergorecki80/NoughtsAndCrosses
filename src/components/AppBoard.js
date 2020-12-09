@@ -13,7 +13,6 @@ const AppBoard = (props) => {
   const [showModal, setShowModal] = useState(false);
 
   const closeModalResetGame = () => {
-    console.log('closeModalResetGame');
     props.dispatch(resetGame());
     setShowModal(false);
 }
@@ -45,11 +44,11 @@ useEffect(() => {
             setShowModal(true);
         }
     });
-
   return (
     <div>
       <GameOver showModal={showModal} closeModalResetGame={closeModalResetGame} isWinner={props.isWinner}/>
-      <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)}>
+      {/* <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)}> */}
+      <AnimatePresence exitBeforeEnter onExitComplete={() => closeModalResetGame()}>
         <Switch location={location} key={location.key}>
           <Route path="/game">
             <GameBoard setShowModal={setShowModal}/>

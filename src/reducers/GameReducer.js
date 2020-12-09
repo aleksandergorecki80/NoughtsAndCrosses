@@ -22,7 +22,10 @@ const GameReducer = (state = gameReducerDefaultState, action) => {
             }
 
         case 'RESET_GAME':
-            return gameReducerDefaultState;
+            return {
+                ...state,
+                gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+            };
         case 'TURN_GAME_ON':
             return {
                 ...state,

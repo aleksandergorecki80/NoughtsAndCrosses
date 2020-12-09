@@ -1,29 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
-
-const useStyles = makeStyles((theme) => ({
-    // button styles
-    button: {
-        margin: theme.spacing(1),
-        padding: '20px 50px',
-        fontSize: '2rem',
-        fontWeight: "bold"
-    },
-    buttonsContainer: {
-        display: 'flex',
-        // justifyContent: 'center',
-        alignItems: 'center',
-        flexDirection: 'column'
-    }
-}));
-///
-
-/// BUTTONS SECTION
 
 const buttonsVarients = {
     hidden: {
@@ -57,8 +36,6 @@ const startButtonVarients = {
 
 
 const StartGame = (props) => {
-    const classes = useStyles();
-
     return (
         <motion.div
             variants={buttonsVarients}
@@ -66,27 +43,25 @@ const StartGame = (props) => {
             animate='visible'
             exit='exit'
         >
-            <Box className={classes.buttonsContainer}>
+            <Box>
                 <Link to="/select">
                     <motion.button
                         variant="outlined"
                         size="large"
                         color="primary"
-                        className={classes.button}
                         variants={startButtonVarients}
                         whileHover="hover"
                     >
                         START
             </motion.button>
                 </Link>
-                <Button
+                <button
                     variant="outlined"
                     size="large"
                     color="primary"
-                    className={classes.button}
                 >
                     About
-                 </Button>
+                 </button>
             </Box>
         </motion.div>
     );

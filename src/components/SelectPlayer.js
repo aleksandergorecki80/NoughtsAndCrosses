@@ -41,7 +41,7 @@ const SelectPlayer = (props) => {
   }
 
   return (
-    <motion.div className="select-player"
+    <motion.div className="container select-player"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

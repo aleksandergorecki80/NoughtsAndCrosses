@@ -1,8 +1,23 @@
 .select-player {
-    // display: flex;
-    // justify-content: center;
-    button {
-        // min-width: 200px;
-        // padding: 30px 50px;
-    }
+    width: 90%;
+    max-width: 700px;
+    
 }
+
+.select-player__button {
+    cursor: pointer;
+    border-radius: 50px;
+    border: 3px solid $buttons-border;
+    background-color: $button-background-color  ;
+    color: $texts-color;
+    min-width: 200px;
+    padding: 10px 50px;
+    margin: 30px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nought-path {
+      stroke: $texts-color;
+      stroke-width: 3;
+  }

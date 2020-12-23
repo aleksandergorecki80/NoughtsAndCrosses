@@ -1,6 +1,6 @@
 .start-game {
-    // display: flex;
-    // justify-content: center;
+    display: flex;
+    flex-direction: column;
     button {
         min-width: 200px;
         padding: 30px 50px;

@@ -49,7 +49,7 @@ const SelectPlayer = (props) => {
       exit="exit"
     >
 
-      <Link to="/game" className="select-player__button" onClick={onSelectPlayer} value="kki">
+      <Link to="/game" className="select-player__button" onClick={onSelectPlayer} value="O">
         <svg 
         width="75" 
         height="75" 
@@ -67,8 +67,20 @@ const SelectPlayer = (props) => {
 
 
       </Link>
-      <Link to="/game">
-        <button value="X" onClick={onSelectPlayer}>X</button>
+      <Link to="/game" onClick={onSelectPlayer} value="X">
+        {/* <button value="X" onClick={onSelectPlayer}>X</button> */}
+        <svg 
+          width="75" 
+          height="75" 
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g>
+            <title>X</title>
+            <path transform="rotate(-90, 37.1815, 37.4315)" id="svg_1" d="m1.125,1.375l72.11298,72.11298" stroke-linecap="undefined" stroke-linejoin="undefined" stroke-width="1.5" stroke="#000000" fill="none"/>
+            <path id="svg_2" d="m1.125,1.375l72.11298,72.11298" stroke-linecap="undefined" stroke-linejoin="undefined" stroke-width="1.5" stroke="#000000" fill="none"/>
+          </g>
+        </svg>
+
       </Link>
     </motion.div>
   )

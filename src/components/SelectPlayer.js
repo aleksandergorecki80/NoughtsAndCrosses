@@ -25,19 +25,10 @@ const containerVariants = {
   },
 };
 
-// const childVariants = {
-//   hidden: {
-//     opacity: 0,
-//   },
-//   visible: {
-//     opacity: 1,
-//   }
-// }
-
 const SelectPlayer = (props) => {
   const onSelectPlayer = (event) => {
-    console.log(event.target.attributes.value.value)
-    props.dispatch(selectPlayer(event.target.attributes.value.value));
+    console.log(event.target.textContent)
+    props.dispatch(selectPlayer(event.target.textContent));
     props.dispatch(turnGameOn());
   }
 
@@ -48,27 +39,22 @@ const SelectPlayer = (props) => {
       animate="visible"
       exit="exit"
     >
-
-      <Link to="/game" className="select-player__button" onClick={onSelectPlayer} value="O">
+      <Link to="/game" className="select-player__button" onClick={onSelectPlayer}>      
         <svg 
-        width="75" 
-        height="75" 
-        xmlns="http://www.w3.org/2000/svg"
-        
-        >
-        <g>
-          <title>O</title>
-          <path 
-          id="svg_1" 
-          className="nought-path"
-          d="m1.875,37.75c0,-19.75138 15.99862,-35.75 35.75,-35.75c19.75138,0 35.75,15.99862 35.75,35.75c0,19.75138 -15.99862,35.75 -35.75,35.75c-19.75138,0 -35.75,-15.99862 -35.75,-35.75z" strokeWidth="1.5" stroke="#000" fill="none"/>
-        </g>
-</svg>
-
-
-      </Link>
-      <Link to="/game" onClick={onSelectPlayer} value="X">
-        {/* <button value="X" onClick={onSelectPlayer}>X</button> */}
+          width="75" 
+          height="75" 
+          xmlns="http://www.w3.org/2000/svg"
+          >
+          <g>
+            <title>O</title>
+            <path 
+            id="svg_1" 
+            className="nought-path"
+            d="m1.875,37.75c0,-19.75138 15.99862,-35.75 35.75,-35.75c19.75138,0 35.75,15.99862 35.75,35.75c0,19.75138 -15.99862,35.75 -35.75,35.75c-19.75138,0 -35.75,-15.99862 -35.75,-35.75z" strokeWidth="1.5" stroke="#000" fill="none"/>
+          </g>
+        </svg>
+      </Link> 
+      <Link to="/game" className="select-player__button" onClick={onSelectPlayer}>     
         <svg 
           width="75" 
           height="75" 
@@ -76,15 +62,25 @@ const SelectPlayer = (props) => {
         >
           <g>
             <title>X</title>
-            <path transform="rotate(-90, 37.1815, 37.4315)" id="svg_1" d="m1.125,1.375l72.11298,72.11298" stroke-linecap="undefined" stroke-linejoin="undefined" stroke-width="1.5" stroke="#000000" fill="none"/>
-            <path id="svg_2" d="m1.125,1.375l72.11298,72.11298" stroke-linecap="undefined" stroke-linejoin="undefined" stroke-width="1.5" stroke="#000000" fill="none"/>
+            <path transform="rotate(-90, 37.1815, 37.4315)" 
+              id="svg_1" d="m1.125,1.375l72.11298,72.11298" 
+              strokeWidth="1.5" stroke="#000000" 
+              fill="none"
+              className="nought-path"
+            />
+            <path 
+              id="svg_2" 
+              d="m1.125,1.375l72.11298,72.11298"  
+              strokeWidth="1.5" 
+              stroke="#000000" 
+              fill="none"
+              className="nought-path"
+            />
           </g>
         </svg>
-
       </Link>
     </motion.div>
   )
 }
-
 
 export default connect()(SelectPlayer);

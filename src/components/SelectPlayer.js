@@ -27,7 +27,6 @@ const containerVariants = {
 
 const SelectPlayer = (props) => {
   const onSelectPlayer = (event) => {
-    console.log(event.target.textContent)
     props.dispatch(selectPlayer(event.target.textContent));
     props.dispatch(turnGameOn());
   }

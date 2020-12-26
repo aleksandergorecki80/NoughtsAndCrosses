@@ -3,11 +3,15 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
+import Nought from './Nought';
 
 
 const useStyles = makeStyles((theme) => ({
     basicTileStyles: {
-        textAlign: 'center',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        // textAlign: 'center',
         maxHeight: '100px',
         height: '100px',
         fontSize: '70px'
@@ -32,8 +36,65 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const nought = () => {
+    return (
+        <svg 
+        width="75" 
+        height="75" 
+        xmlns="http://www.w3.org/2000/svg"
+        >
+        <g>
+          <title>O</title>
+          <path 
+          id="svg_1" 
+          className="nought-path"
+          d="m1.875,37.75c0,-19.75138 15.99862,-35.75 35.75,-35.75c19.75138,0 35.75,15.99862 35.75,35.75c0,19.75138 -15.99862,35.75 -35.75,35.75c-19.75138,0 -35.75,-15.99862 -35.75,-35.75z" strokeWidth="1.5" stroke="#000" fill="none"/>
+        </g>
+      </svg>
+    )
+}
+
+const cross = () => {
+    return (
+        <svg 
+        width="75" 
+        height="75" 
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g>
+          <title>X</title>
+          <path transform="rotate(-90, 37.1815, 37.4315)" 
+            id="svg_1" d="m1.125,1.375l72.11298,72.11298" 
+            strokeWidth="1.5" stroke="#000000" 
+            fill="none"
+            className="nought-path"
+          />
+          <path 
+            id="svg_2" 
+            d="m1.125,1.375l72.11298,72.11298"  
+            strokeWidth="1.5" 
+            stroke="#000000" 
+            fill="none"
+            className="nought-path"
+          />
+        </g>
+      </svg>
+    )
+}
+
+
 
 const Tile = (props) => {
+
+    
+    const displayMark = () => {
+        if(props.mark === 'O') return nought();
+        else if(props.mark === 'X') return cross();
+        else return props.mark;
+    }  
+
+    // console.log(<Nought />);
+
     const classes = useStyles();
     const onMarkChange = () => {
         if(props.isRun){
@@ -45,23 +106,23 @@ const Tile = (props) => {
     if (props.index === 6 || props.index === 7) {
         return (
             <Box onClick={onMarkChange}>
-                <Typography className={`${classes.basicTileStyles} ${classes.rightBorderContainer}`}>{props.mark}</Typography>
+                <Typography className={`${classes.basicTileStyles} ${classes.rightBorderContainer} center-mark`}>{displayMark()}</Typography>
             </Box>
         );
     } 
     else if (props.index === 2 || props.index === 5 ){
         return (
-            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.bottomBorderContainer}`}>{props.mark}</Typography></Box>
+            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.bottomBorderContainer} center-mark`}>{displayMark()}</Typography></Box>
         );
     }
     else if (props.index === 8) {
         return (
-            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.noBorderContainer}`}>{props.mark}</Typography></Box>
+            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.noBorderContainer} center-mark`}>{displayMark()}</Typography></Box>
         );
     }
     else {
         return (
-            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.tileContainer}`}>{props.mark}</Typography></Box>
+            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.tileContainer} center-mark`}>{displayMark()}</Typography></Box>
         );
     }
 

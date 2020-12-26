@@ -1,5 +1,15 @@
 // Game reducer
 
+// const gameReducerDefaultState = {
+//     gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
+//     currentPlayer: '',
+//     isRun: false,
+//     isWinner: ''
+// };
+
+const localData = JSON.parse(localStorage.getItem('game'));
+console.log(localData);
+
 const gameReducerDefaultState = {
     gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     currentPlayer: '',
@@ -7,7 +17,7 @@ const gameReducerDefaultState = {
     isWinner: ''
 };
 
-const GameReducer = (state = gameReducerDefaultState, action) => {
+const GameReducer = (state = localData ? localData : gameReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_MARK':
             return {

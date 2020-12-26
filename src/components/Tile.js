@@ -90,8 +90,6 @@ const Tile = (props) => {
         else return props.mark;
     }  
 
-    // console.log(<Nought />);
-
     const classes = useStyles();
     const onMarkChange = () => {
         if(props.isRun){

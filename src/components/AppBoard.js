@@ -57,6 +57,17 @@ useEffect(() => {
             setShowModal(true);
           }
     });
+
+useEffect(() => {
+  // save to the local storage
+  localStorage.setItem('game', JSON.stringify({
+    gameState: props.gameState,
+    currentPlayer: props.currentPlayer,
+    isWinner: props.isWinner,
+    isRun: props.isRun
+  }));
+});
+
   return (
     <div>
       <GameOver showModal={showModal} closeModalResetGame={closeModalResetGame} isWinner={props.isWinner}/>
@@ -80,9 +91,10 @@ useEffect(() => {
 
 const mapStateToProps = (state) => {
   return {
+      gameState: state.game.gameState,  
       currentPlayer: state.game.currentPlayer,
-      gameState: state.game.gameState,
-      isWinner: state.game.isWinner
+      isWinner: state.game.isWinner,
+      isRun: state.game.isRun,
   }
 }
 

@@ -44,7 +44,7 @@ const StartGame = (props) => {
             exit='exit'
             className="container start-game"
         >
-            <Box>
+            <Box className="container start-game">
                 <Link to="/select">
                     <motion.button
                         variant="outlined"

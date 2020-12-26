@@ -1,9 +1,9 @@
 .start-game {
     display: flex;
+    align-items: center;
     flex-direction: column;
     button {
         min-width: 200px;
         padding: 30px 50px;
-        color: red;
     }
 }

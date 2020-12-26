@@ -8,9 +8,6 @@ import Nought from './Nought';
 
 const useStyles = makeStyles((theme) => ({
     basicTileStyles: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
         // textAlign: 'center',
         maxHeight: '100px',
         height: '100px',
@@ -18,16 +15,16 @@ const useStyles = makeStyles((theme) => ({
     },
     tileContainer: {
 
-        borderRight: '1px solid black',
-        borderBottom: '1px solid black',
+        borderRight: '1px solid #F4A261',
+        borderBottom: '1px solid #F4A261',
 
     },
     rightBorderContainer: {
-        borderRight: '1px solid black',
+        borderRight: '1px solid #F4A261',
 
     },
     bottomBorderContainer: {
-        borderBottom: '1px solid black',
+        borderBottom: '1px solid #F4A261',
 
     },
     noBorderContainer: {
@@ -106,23 +103,23 @@ const Tile = (props) => {
     if (props.index === 6 || props.index === 7) {
         return (
             <Box onClick={onMarkChange}>
-                <Typography className={`${classes.basicTileStyles} ${classes.rightBorderContainer} center-mark`}>{displayMark()}</Typography>
+                <Typography className={`${classes.basicTileStyles} ${classes.rightBorderContainer} tile`}>{displayMark()}</Typography>
             </Box>
         );
     } 
     else if (props.index === 2 || props.index === 5 ){
         return (
-            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.bottomBorderContainer} center-mark`}>{displayMark()}</Typography></Box>
+            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.bottomBorderContainer} tile`}>{displayMark()}</Typography></Box>
         );
     }
     else if (props.index === 8) {
         return (
-            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.noBorderContainer} center-mark`}>{displayMark()}</Typography></Box>
+            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.noBorderContainer} tile`}>{displayMark()}</Typography></Box>
         );
     }
     else {
         return (
-            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.tileContainer} center-mark`}>{displayMark()}</Typography></Box>
+            <Box onClick={onMarkChange}><Typography className={`${classes.basicTileStyles} ${classes.tileContainer} tile`}>{displayMark()}</Typography></Box>
         );
     }
 

@@ -61,6 +61,7 @@ const GameBoard = (props) => {
             initial='hidden'
             animate='visible'
             exit='exit'
+            className='game-board'
         >
             <Grid item container>
                 <Grid item xs={1} sm={2} md={3} lg={4} />

@@ -32,7 +32,8 @@ const SelectPlayer = (props) => {
   }
 
   return (
-    <motion.div className="container select-player"
+    <motion.div 
+      className="container start-game"
       variants={containerVariants}
       initial="hidden"
       animate="visible"

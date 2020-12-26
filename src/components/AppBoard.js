@@ -42,7 +42,20 @@ useEffect(() => {
         ) {
             props.dispatch(selectWinner('O'));
             setShowModal(true);
-        }
+        } else if (
+          props.gameState[0] !== ' ' && 
+          props.gameState[1] !== ' ' && 
+          props.gameState[2] !== ' ' && 
+          props.gameState[3] !== ' ' && 
+          props.gameState[4] !== ' ' && 
+          props.gameState[5] !== ' ' && 
+          props.gameState[6] !== ' ' && 
+          props.gameState[7] !== ' ' && 
+          props.gameState[8] !== ' '
+          ) {
+            props.dispatch(selectWinner('Draw'));
+            setShowModal(true);
+          }
     });
   return (
     <div>

@@ -32,7 +32,7 @@ const GameOver = ({ showModal, closeModalResetGame, isWinner }) => {
             animate="visible"
           >
             <p>GAME OVER</p>
-            <p>{isWinner} wins.</p>
+            <p>{isWinner !== 'Draw' ? `${isWinner} wins ` : `${isWinner}`}</p>
             <Link to="/">
               <button onClick={closeModalResetGame}>Start Again</button>
             </Link>

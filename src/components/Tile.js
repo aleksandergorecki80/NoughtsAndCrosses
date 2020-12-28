@@ -3,7 +3,7 @@ import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import Nought from './Nought';
+import { motion } from 'framer-motion';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -14,24 +14,50 @@ const useStyles = makeStyles((theme) => ({
         fontSize: '70px'
     },
     tileContainer: {
-
         borderRight: '1px solid #F4A261',
         borderBottom: '1px solid #F4A261',
-
     },
     rightBorderContainer: {
         borderRight: '1px solid #F4A261',
-
     },
     bottomBorderContainer: {
         borderBottom: '1px solid #F4A261',
-
     },
     noBorderContainer: {
         border: 'none',
-
     }
 }));
+
+const svgPathVariants = {
+    start: {
+        opacity: 0,
+        pathLength: 0
+    },
+    end: {
+        opacity: 1,
+        pathLength: 1,
+        transition: {
+            duration: 0.5,
+            ease: "easeInOut"
+        }
+    }
+}
+const svgCrossPathVariants = {
+    start: {
+        opacity: 0,
+        pathLength: 0
+    },
+    end: {
+        opacity: 1,
+        pathLength: 1,
+        transition: {
+            duration: 0.5,
+            ease: "easeInOut",
+            delay: 0.5
+        }
+    }
+}
+
 
 const nought = () => {
     return (
@@ -42,10 +68,14 @@ const nought = () => {
         >
         <g>
           <title>O</title>
-          <path 
+          <motion.path 
           id="svg_1" 
           className="nought-path"
-          d="m1.875,37.75c0,-19.75138 15.99862,-35.75 35.75,-35.75c19.75138,0 35.75,15.99862 35.75,35.75c0,19.75138 -15.99862,35.75 -35.75,35.75c-19.75138,0 -35.75,-15.99862 -35.75,-35.75z" strokeWidth="1.5" stroke="#000" fill="none"/>
+          d="m1.875,37.75c0,-19.75138 15.99862,-35.75 35.75,-35.75c19.75138,0 35.75,15.99862 35.75,35.75c0,19.75138 -15.99862,35.75 -35.75,35.75c-19.75138,0 -35.75,-15.99862 -35.75,-35.75z" strokeWidth="1.5" stroke="#000" fill="none"
+          variants={svgPathVariants}
+          initial="start"
+          animate="end"
+          />
         </g>
       </svg>
     )
@@ -60,19 +90,24 @@ const cross = () => {
       >
         <g>
           <title>X</title>
-          <path transform="rotate(-90, 37.1815, 37.4315)" 
-            id="svg_1" d="m1.125,1.375l72.11298,72.11298" 
-            strokeWidth="1.5" stroke="#000000" 
+          <motion.path 
+            id="svg_1" d="m0.375,1l72.3371,72.3371" 
+            stroke-width="1.5" 
             fill="none"
             className="nought-path"
+            variants={svgPathVariants}
+            initial="start"
+            animate="end"
           />
-          <path 
+          <motion.path 
             id="svg_2" 
-            d="m1.125,1.375l72.11298,72.11298"  
+            d="m74.375,1.25l-72.88025,72.88025"  
             strokeWidth="1.5" 
-            stroke="#000000" 
             fill="none"
             className="nought-path"
+            variants={svgCrossPathVariants}
+            initial="start"
+            animate="end"
           />
         </g>
       </svg>
@@ -81,9 +116,7 @@ const cross = () => {
 
 
 
-const Tile = (props) => {
-
-    
+const Tile = (props) => {  
     const displayMark = () => {
         if(props.mark === 'O') return nought();
         else if(props.mark === 'X') return cross();

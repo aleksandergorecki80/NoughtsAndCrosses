@@ -71,7 +71,6 @@ useEffect(() => {
   return (
     <div>
       <GameOver showModal={showModal} closeModalResetGame={closeModalResetGame} isWinner={props.isWinner}/>
-      {/* <AnimatePresence exitBeforeEnter onExitComplete={() => setShowModal(false)}> */}
       <AnimatePresence exitBeforeEnter onExitComplete={() => closeModalResetGame()}>
         <Switch location={location} key={location.key}>
           <Route path="/game">

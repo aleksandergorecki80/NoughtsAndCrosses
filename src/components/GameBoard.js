@@ -26,15 +26,6 @@ const containerVariants = {
       }
     },
   };
-  
-  // const childVariants = {
-  //   hidden: {
-  //     opacity: 0,
-  //   },
-  //   visible: {
-  //     opacity: 1,
-  //   }
-  // }
 
 const GameBoard = (props) => {
     const onMarkTheTile = (id, currentPlayer) => {

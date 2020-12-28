@@ -1,14 +1,6 @@
 // Game reducer
 
-// const gameReducerDefaultState = {
-//     gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
-//     currentPlayer: '',
-//     isRun: false,
-//     isWinner: ''
-// };
-
 const localData = JSON.parse(localStorage.getItem('game'));
-console.log(localData);
 
 const gameReducerDefaultState = {
     gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],

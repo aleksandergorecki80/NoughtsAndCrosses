@@ -6,7 +6,8 @@ const gameReducerDefaultState = {
     gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
     currentPlayer: '',
     isRun: false,
-    isWinner: ''
+    isWinner: '',
+    guestPlaysAs: ''
 };
 
 const GameReducer = (state = localData ? localData : gameReducerDefaultState, action) => {
@@ -33,7 +34,7 @@ const GameReducer = (state = localData ? localData : gameReducerDefaultState, ac
                 ...state,
                 isRun: true
             }
-        case 'SELECT_PLAYER':
+        case 'SWITCH_PLAYER':
             return {
                 ...state,
                 currentPlayer: action.player
@@ -42,6 +43,11 @@ const GameReducer = (state = localData ? localData : gameReducerDefaultState, ac
             return {
                 ...state,
                 isWinner: action.winner
+            }
+        case 'GUEST_PLAY_AS':
+            return {
+                ...state,
+                guestPlaysAs: action.mark
             }
         default:
             return state;

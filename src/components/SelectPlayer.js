@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { motion } from 'framer-motion';
-import { selectPlayer, turnGameOn } from '../actions/GameActions';
+import { guestPlayAs, switchPlayer, turnGameOn } from '../actions/GameActions';
 
 const containerVariants = {
   hidden: {
@@ -27,7 +27,8 @@ const containerVariants = {
 
 const SelectPlayer = (props) => {
   const onSelectPlayer = (event) => {
-    props.dispatch(selectPlayer(event.target.textContent));
+    props.dispatch(guestPlayAs(event.target.textContent));
+    props.dispatch(switchPlayer(event.target.textContent));
     props.dispatch(turnGameOn());
   }
 

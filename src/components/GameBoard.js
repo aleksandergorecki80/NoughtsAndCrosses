@@ -3,7 +3,7 @@ import Tile from './Tile';
 import { connect } from 'react-redux';
 import { Grid } from '@material-ui/core';
 import { motion } from 'framer-motion';
-import { addMark, selectPlayer } from '../actions/GameActions';
+import { addMark, switchPlayer } from '../actions/GameActions';
 import { Link } from 'react-router-dom';
 
 const containerVariants = {
@@ -33,7 +33,7 @@ const GameBoard = (props) => {
     }
     const onSwitchThePlayer = (currentPlayer) => {
         const switchToPlayer = currentPlayer === 'X' ? 'O' : 'X';
-        props.dispatch(selectPlayer(switchToPlayer));
+        props.dispatch(switchPlayer(switchToPlayer));
     }
     const tiles = props.game.map((mark, index, array) => {
         return (

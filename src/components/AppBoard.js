@@ -64,8 +64,15 @@ useEffect(() => {
     gameState: props.gameState,
     currentPlayer: props.currentPlayer,
     isWinner: props.isWinner,
-    isRun: props.isRun
+    isRun: props.isRun,
+    guestPlaysAs: props.guestPlaysAs
   }));
+});
+
+useEffect(() => {
+  if(props.currentPlayer !== props.guestPlaysAs) {
+    console.log('losuj tutaj');
+  }
 });
 
   return (
@@ -94,6 +101,7 @@ const mapStateToProps = (state) => {
       currentPlayer: state.game.currentPlayer,
       isWinner: state.game.isWinner,
       isRun: state.game.isRun,
+      guestPlaysAs: state.game.guestPlaysAs
   }
 }
 

@@ -14,9 +14,9 @@ export const resetGame = () => {
     }
 }
 
-export const selectPlayer = (player) => {
+export const switchPlayer = (player) => {
     return {
-        type: 'SELECT_PLAYER',
+        type: 'SWITCH_PLAYER',
         player
     }
 }
@@ -25,5 +25,12 @@ export const selectWinner = (winner) => {
     return {
         type: 'SELECT_WINNER',
         winner
+    }
+}
+
+export const guestPlayAs = (mark) => {
+    return {
+        type: 'GUEST_PLAY_AS',
+        mark
     }
 }

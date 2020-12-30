@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Box from '@material-ui/core/Box';
+import About from './About';
 
 const buttonsVarients = {
     hidden: {
@@ -30,7 +31,10 @@ const startButtonVarients = {
     }
 }
 
+
+
 const StartGame = (props) => {
+    const [showModal, setShowModal] = useState(false);
     return (
         <motion.div
             variants={buttonsVarients}
@@ -55,10 +59,12 @@ const StartGame = (props) => {
                     variant="outlined"
                     size="large"
                     color="primary"
+                    onClick={()=>setShowModal(true)}
                 >
                     About
                  </button>
             </Box>
+            <About showModal={showModal} setShowModal={setShowModal}/>
         </motion.div>
     );
 }

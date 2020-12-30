@@ -6,15 +6,16 @@ import AppBoard from "./components/AppBoard";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
 import { BrowserRouter as Router } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 const store = configureStore();
 const App = () => {
   return (
     <Provider store={store}>
       <React.StrictMode>
-        <Router>
+        <HashRouter>
           <AppBoard />
-        </Router>
+        </HashRouter>
       </React.StrictMode>
     </Provider>
   );

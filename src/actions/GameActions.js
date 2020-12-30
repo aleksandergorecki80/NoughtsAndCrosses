@@ -34,3 +34,7 @@ export const guestPlayAs = (mark) => {
         mark
     }
 }
+
+export const turnGameOff = () => ({
+    type: 'TURN_GAME_OFF',
+});

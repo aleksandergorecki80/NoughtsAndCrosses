@@ -29,9 +29,11 @@ const containerVariants = {
 
 const GameBoard = (props) => {
     const onMarkTheTile = (id, currentPlayer) => {
+        console.log('onclick onMarkTheTile')
         props.dispatch(addMark(id, currentPlayer));
     }
     const onSwitchThePlayer = (currentPlayer) => {
+        console.log('onclick switchPlayer')
         const switchToPlayer = currentPlayer === 'X' ? 'O' : 'X';
         props.dispatch(switchPlayer(switchToPlayer));
     }

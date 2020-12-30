@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Switch, useLocation } from "react-router-dom";
 import { connect } from 'react-redux';
-import { selectWinner, resetGame } from '../actions/GameActions';
+import { selectWinner, resetGame, addMark, switchPlayer } from '../actions/GameActions';
 import GameOver from './GameOver';
 import StartGame from './StartGame';
 import SelectPlayer from './SelectPlayer';
@@ -75,9 +75,15 @@ useEffect(() => {
 });
 
 useEffect(() => {
+  // draw a place to mark by computer
   if(props.currentPlayer !== props.guestPlaysAs) {
-    const placeOnBoard = Math.floor(Math.random() * 9)
-    console.log(placeOnBoard);
+    const computerPlaysAs = props.guestPlaysAs === 'X' ? 'O' : 'X';
+    let indexToMark = '';
+    do{
+      indexToMark = Math.floor(Math.random() * 9);
+    } while (props.gameState[indexToMark] !== ' ');
+      props.dispatch(addMark(indexToMark, computerPlaysAs));
+      props.dispatch(switchPlayer(props.guestPlaysAs));
   }
 });
 

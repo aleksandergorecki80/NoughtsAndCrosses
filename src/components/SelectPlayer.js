@@ -29,7 +29,6 @@ const SelectPlayer = (props) => {
   const onSelectPlayer = (event) => {
     props.dispatch(guestPlayAs(event.target.textContent));
     props.dispatch(switchPlayer(event.target.textContent));
-    props.dispatch(turnGameOn());
   }
 
   return (

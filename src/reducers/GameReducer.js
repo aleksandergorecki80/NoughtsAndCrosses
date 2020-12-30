@@ -1,6 +1,6 @@
 // Game reducer
 
-// const localData = JSON.parse(localStorage.getItem('game'));
+const localData = JSON.parse(localStorage.getItem('game'));
 
 const gameReducerDefaultState = {
     gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '],
@@ -10,8 +10,8 @@ const gameReducerDefaultState = {
     guestPlaysAs: ''
 };
 
-const GameReducer = (state = gameReducerDefaultState, action) => {
-    // const GameReducer = (state = localData ? localData : gameReducerDefaultState, action) => {
+// const GameReducer = (state = gameReducerDefaultState, action) => {
+const GameReducer = (state = localData ? localData : gameReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_MARK':
             return {

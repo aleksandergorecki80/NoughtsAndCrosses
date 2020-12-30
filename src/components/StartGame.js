@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import Box from '@material-ui/core/Box';
 import About from './About';
+import { turnGameOn } from '../actions/GameActions';
 
 const buttonsVarients = {
     hidden: {
@@ -51,6 +52,7 @@ const StartGame = (props) => {
                         color="primary"
                         variants={startButtonVarients}
                         whileHover="hover"
+                        onClick={()=>{props.dispatch(turnGameOn());}}
                     >
                         START
             </motion.button>

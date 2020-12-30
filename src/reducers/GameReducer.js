@@ -10,7 +10,6 @@ const gameReducerDefaultState = {
     guestPlaysAs: ''
 };
 
-// const GameReducer = (state = gameReducerDefaultState, action) => {
 const GameReducer = (state = localData ? localData : gameReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_MARK':

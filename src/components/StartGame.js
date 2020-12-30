@@ -21,7 +21,6 @@ const buttonsVarients = {
         }
     }
 }
-
 const startButtonVarients = {
     hover: {
         scale: 1.1,
@@ -31,8 +30,6 @@ const startButtonVarients = {
         }
     }
 }
-
-
 
 const StartGame = (props) => {
     const [showModal, setShowModal] = useState(false);

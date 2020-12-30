@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import { motion } from 'framer-motion';
 
-
 const useStyles = makeStyles((theme) => ({
     basicTileStyles: {
         // textAlign: 'center',
@@ -113,8 +112,6 @@ const cross = () => {
     )
 }
 
-
-
 const Tile = (props) => {  
     const displayMark = () => {
         if(props.mark === 'O') return nought();
@@ -129,7 +126,6 @@ const Tile = (props) => {
             props.onSwitchThePlayer(props.currentPlayer);
         }
     }
-
     if (props.index === 6 || props.index === 7) {
         return (
             <Box onClick={onMarkChange}>

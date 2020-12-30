@@ -8,9 +8,6 @@ import SelectPlayer from './SelectPlayer';
 import GameBoard from './GameBoard';
 import { AnimatePresence } from 'framer-motion';
 
-
-
-
 const AppBoard = (props) => {
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
@@ -85,8 +82,6 @@ const AppBoard = (props) => {
     }));
     }
   });
-
-
   return (
     <div>
       <GameOver showModal={showModal} closeModalResetGame={closeModalResetGame} isWinner={props.isWinner} />

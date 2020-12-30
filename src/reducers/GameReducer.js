@@ -22,33 +22,30 @@ const GameReducer = (state = localData ? localData : gameReducerDefaultState, ac
                         return state.gameState[index]
                     }
                 })
-            }
+            };
 
         case 'RESET_GAME':
-            return {
-                ...state,
-                gameState: [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
-            };
+            return gameReducerDefaultState;
         case 'TURN_GAME_ON':
             return {
                 ...state,
                 isRun: true
-            }
+            };
         case 'SWITCH_PLAYER':
             return {
                 ...state,
                 currentPlayer: action.player
-            }
+            };
         case 'SELECT_WINNER':
             return {
                 ...state,
                 isWinner: action.winner
-            }
+            };
         case 'GUEST_PLAY_AS':
             return {
                 ...state,
                 guestPlaysAs: action.mark
-            }
+            };
         default:
             return state;
     }

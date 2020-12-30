@@ -12,9 +12,14 @@ const AppBoard = (props) => {
   const location = useLocation();
   const [showModal, setShowModal] = useState(false);
 
-  const closeModalResetGame = () => {
+const closeModalResetGame = () => {
     props.dispatch(resetGame());
     setShowModal(false);
+}
+
+const closeModal = () => {
+  // props.dispatch(resetGame());
+  setShowModal(false);
 }
 
 useEffect(() => {
@@ -71,14 +76,15 @@ useEffect(() => {
 
 useEffect(() => {
   if(props.currentPlayer !== props.guestPlaysAs) {
-    console.log('losuj tutaj');
+    const placeOnBoard = Math.floor(Math.random() * 9)
+    console.log(placeOnBoard);
   }
 });
 
   return (
     <div>
       <GameOver showModal={showModal} closeModalResetGame={closeModalResetGame} isWinner={props.isWinner}/>
-      <AnimatePresence exitBeforeEnter onExitComplete={() => closeModalResetGame()}>
+      <AnimatePresence exitBeforeEnter onExitComplete={() => closeModal()}>
         <Switch location={location} key={location.key}>
           <Route path="/game">
             <GameBoard setShowModal={setShowModal}/>
